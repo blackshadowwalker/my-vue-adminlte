@@ -1,0 +1,7 @@
+<div>
+    this app. {{title}}<br>
+    <app-header></app-header>
+    <app-menu></app-menu>
+    <app-content></app-content>
+    <app-footer></app-footer>
+<div>
