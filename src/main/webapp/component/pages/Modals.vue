@@ -1,4 +1,4 @@
-<template>
+<div>
   <div class="example-modal">
     <div class="modal">
       <div class="modal-dialog">
@@ -118,19 +118,4 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
   </div><!-- /.example-modal -->
-</template>
-
-<style>
-  .example-modal .modal {
-    position: relative;
-    top: auto;
-    bottom: auto;
-    right: auto;
-    left: auto;
-    display: block;
-    z-index: 1;
-  }
-  .example-modal .modal {
-    background: transparent !important;
-  }
-</style>
+</div>

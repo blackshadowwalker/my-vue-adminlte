@@ -3,16 +3,16 @@
     'use strict';
 
     require.config({
-        baseUrl: "static/plugins",
+        baseUrl: "/static/plugins",
         xhtml: true,
         paths: {
             "jquery": "jQuery/jQuery-2.1.4.min",
             "vue": "vue/vue",
-            "vue-router": [ "https://cdnjs.cloudflare.com/ajax/libs/vue-router/0.7.10/vue-router",
-                            "vue/vue-router"],
+            "vue-router": "vue/vue-router",
             "vue-resource": "https://cdn.jsdelivr.net/vue.resource/0.9.1/vue-resource.min",
             "text": "require/text/requirejs-text",
             "html": "require/html/requirejs-html",
+            "css": "require/css/requirejs-css",
         },
         shim: {
             'bootstrap': '/static/bootstrap/js/bootstrap.min.js',
@@ -28,14 +28,13 @@
         Vue.use(VueRouter);
         Vue.use(VueResource);
 
-        var router = new VueRouter({ linkActiveClass: 'active', history: true })
+        exports.router = new VueRouter({ linkActiveClass: 'active', history: true })
 
         var Header    = function(resolve) { require(['/component/layout/Header.js'], resolve); }
-        var NotFound  = function(resolve) { require(['/component/layout/NotFound.js'], resolve); }
+
         var Menu      = function(resolve) { require(['/component/layout/Menu.js'], resolve); }
         var Content   = function(resolve) { require(['/component/layout/Content.js'], resolve); }
         var Footer    = function(resolve) { require(['/component/layout/Footer.js'], resolve); }
-        var DashBoard = function(resolve) { require(['/component/dashboard/Dashboard.js'], resolve); }
 
         exports.Vue = Vue;
         Vue.config.debug = true
@@ -64,16 +63,30 @@
 
         });
 
-
         router.map({
-            '/*': {
-                component: NotFound
+            '*': {
+                component: function(resolve) { require(['/component/layout/NotFound.js'], resolve); }
             },
             '/dashBoard': {
-                component: DashBoard
+                component: function(resolve) { require(['/component/dashboard/Dashboard.js'], resolve); }
             },
             '/ui/general': {
-                component: Header
+                component: function(resolve) { require(['/component/pages/General.js'], resolve); }
+            },
+            '/ui/icons': {
+                component: function(resolve) { require(['/component/pages/Icons.js'], resolve); }
+            },
+            '/ui/buttons': {
+                component: function(resolve) { require(['/component/pages/Buttons.js'], resolve); }
+            },
+            '/ui/sliders': {
+                component: function(resolve) { require(['/component/pages/Sliders.js'], resolve); }
+            },
+            '/ui/timeline': {
+                component: function(resolve) { require(['/component/pages/Timeline.js'], resolve); }
+            },
+            '/ui/modals': {
+                component: function(resolve) { require(['/component/pages/Modals.js'], resolve); }
             }
         })
 

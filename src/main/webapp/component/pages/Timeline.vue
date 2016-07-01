@@ -1,4 +1,4 @@
-<template>
+<div>
   <section class="content">
 
     <!-- row -->
@@ -151,4 +151,4 @@
         </div><!-- /.box -->
       </div><!-- /.col -->
     </div><!-- /.row -->
-</template>
+</div>
